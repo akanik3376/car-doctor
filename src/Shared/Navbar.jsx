@@ -31,7 +31,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <p className="px-5 py-2 text-red-600 font-semibold border border-red-600">Appointment</p>
             </div>
         </div>
     );
