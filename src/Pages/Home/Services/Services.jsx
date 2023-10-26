@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Service from "./Service";
-
+import timeImg from '../../../assets/logo/001-timetable.svg'
+import phoneImg from '../../../assets/logo/Group 34.svg'
+import locationImg from '../../../assets/logo/Group 35.svg'
+// import contactImg from '../../../assets/logo/Group.svg'
 const Services = () => {
 
     const [services, setServices] = useState([])
@@ -22,6 +25,30 @@ const Services = () => {
                 {
                     services?.map(service => <Service key={service.service_id} service={service}></Service>)
                 }
+            </div>
+
+            <div className="my-12 bg-[#151515] h-[200px] flex justify-around items-center text-white">
+                <div className="flex items-center gap-4">
+                    <img src={timeImg} alt="" />
+                    <div>
+                        <p>We are open monday-friday</p>
+                        <h4 className="text-xl">7:00 am - 9:00 pm</h4>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    <img src={phoneImg} alt="" />
+                    <div>
+                        <p>We are open monday-friday</p>
+                        <h4 className="text-xl">7:00 am - 9:00 pm</h4>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    <img src={locationImg} alt="" />
+                    <div>
+                        <p>We are open monday-friday</p>
+                        <h4 className="text-xl">7:00 am - 9:00 pm</h4>
+                    </div>
+                </div>
             </div>
         </div>
     );
