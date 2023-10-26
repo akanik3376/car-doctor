@@ -3,8 +3,23 @@ import { Link } from 'react-router-dom';
 import loginPic from '../../assets/images/login/login.svg'
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
+import { useContext } from 'react';
+import { AuthContext } from '../../Provoidor/AuthProvidor';
 
 const Login = () => {
+
+    const { googleLogin, loginUser } = useContext(AuthContext)
+
+    const handelGoogleLogin = () => {
+        googleLogin()
+
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
 
     const HandelLogin = e => {
         e.preventDefault()
@@ -13,6 +28,13 @@ const Login = () => {
         const password = e.target.password.value
 
         console.log(email, password)
+        loginUser(email, password)
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
     return (
@@ -48,8 +70,9 @@ const Login = () => {
 
                         <div className='flex flex-col text-center'>
                             <p className=' text-[#444] my-3'>Or Sign In with</p>
-                            <div className='flex justify-center gap'>
-                                <button className='text-3xl'><FcGoogle></FcGoogle></button>
+                            <div className='flex justify-center gap-5'>
+                                <button onClick={() => handelGoogleLogin()}
+                                    className='text-3xl'><FcGoogle></FcGoogle></button>
                                 <button className='text-3xl'><AiFillFacebook></AiFillFacebook></button>
                                 <button className='text-3xl'><AiFillLinkedin></AiFillLinkedin></button>
                             </div>

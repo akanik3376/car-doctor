@@ -2,8 +2,12 @@ import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import SingUpPic from '../../assets/images/login/login.svg'
+import { useContext } from "react";
+import { AuthContext } from "../../Provoidor/AuthProvidor";
 
 const SignUp = () => {
+
+    const { createUser } = useContext(AuthContext)
 
     const HandelLogin = e => {
         e.preventDefault()
@@ -13,6 +17,15 @@ const SignUp = () => {
         const password = e.target.password.value
 
         console.log(name, email, password)
+        createUser(email, password)
+            .then((result) => {
+                const user = result.user;
+
+                console.log(user)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
     return (
