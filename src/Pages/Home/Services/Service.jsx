@@ -11,8 +11,8 @@ const Service = ({ service }) => {
                 <h2 className="card-title my-4">{title}</h2>
                 <div className="flex justify-between items-center ">
                     <p className="text-red-600 font-semibold">Price: ${price}</p>
-                    <Link to={`/checkout`}>
-                        <p className="text-red-600 text-3xl "><BsFillArrowRightCircleFill></BsFillArrowRightCircleFill></p>
+                    <Link to={`/checkout/${_id}`}>
+                        <button className="text-red-600 text-3xl "><BsFillArrowRightCircleFill></BsFillArrowRightCircleFill></button>
                     </Link>
                 </div>
             </div>

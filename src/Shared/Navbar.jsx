@@ -1,16 +1,39 @@
 import { NavLink } from "react-router-dom";
 import logoPic from '../../src/assets/logo/logo.svg';
+import { useContext } from "react";
+import { AuthContext } from "../Provoidor/AuthProvidor";
 
 const Navbar = () => {
+
+    const { user, logoutUser } = useContext(AuthContext)
+
+    const HandelLogOut = () => {
+        logoutUser()
+            .then(result => {
+                console.log(result)
+            })
+            .catch(err => {
+                console.log(err)
+
+            })
+    }
 
     const navLink = <>
 
         <li><NavLink>Home</NavLink></li>
-        <li><NavLink>About</NavLink></li>
+        {/* <li><NavLink>About</NavLink></li> */}
         <li><NavLink>Services</NavLink></li>
-        <li><NavLink>Blog</NavLink></li>
-        <li><NavLink>Contact</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
+        {/* <li><NavLink>Blog</NavLink></li> */}
+        {/* <li><NavLink>Contact</NavLink></li> */}
+
+        {
+            user ? <>
+                <li><NavLink to='/booking'>My Booking</NavLink></li>
+                <li><NavLink><button onClick={HandelLogOut}>
+                    Logout</button></NavLink></li>
+            </>
+                : <li><NavLink to='/login'>Login</NavLink></li>
+        }
 
     </>
 
@@ -28,7 +51,7 @@ const Navbar = () => {
                 {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
                 <img className="w-20" src={logoPic} alt="" />
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex lg:items-center">
                 <ul className="menu menu-horizontal px-1">
                     {navLink}
                 </ul>
