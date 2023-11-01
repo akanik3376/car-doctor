@@ -11,7 +11,9 @@ const PrivetRoot = ({ children }) => {
     // console.log(location?.pathname)
 
     if (loading) {
-        return <span className="loading loading-spinner text-secondary"></span>
+        return <div className="flex justify-center items-center h-[100vh] w-[100vw] my-auto">
+            <span className="loading loading-spinner text-secondary"></span>
+        </div>
 
     }
 

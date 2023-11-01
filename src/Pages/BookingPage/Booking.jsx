@@ -1,20 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provoidor/AuthProvidor";
 import swal from "sweetalert";
+import useAxios from "../../Hooks/useAxios";
 
 const Booking = () => {
     const { user } = useContext(AuthContext)
     const [booking, setBooking] = useState()
+    const axiosLink = useAxios()
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    // const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `/bookings?email=${user?.email}`
 
     useEffect(() => {
-        fetch(url, { credentials: 'include' })
-            .then(res => res.json())
-            .then(data => {
-                setBooking(data)
-            })
-    }, [url])
+        // fetch(url, { credentials: 'include' })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setBooking(data)
+        //     })
+        axiosLink.get(url)
+            .then(res => setBooking(res.data))
+    }, [url, axiosLink])
 
     const HandelDelete = id => {
         const proceed = confirm('are you sure? you wont to delete')

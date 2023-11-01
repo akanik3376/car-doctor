@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Service from "./Service";
 import timeImg from '../../../assets/logo/001-timetable.svg'
 import phoneImg from '../../../assets/logo/Group 34.svg'
 import locationImg from '../../../assets/logo/Group 35.svg'
+import useServices from "../../../Hooks/useServices";
 // import contactImg from '../../../assets/logo/Group.svg'
 const Services = () => {
 
-    const [services, setServices] = useState([])
+    const services = useServices()
 
-    useEffect(() => {
-        fetch('http://localhost:5000/services')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, [])
+    // const [services, setServices] = useState([])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/services')
+    //         .then(res => res.json())
+    //         .then(data => setServices(data))
+    // }, [])
 
     return (
         <div>

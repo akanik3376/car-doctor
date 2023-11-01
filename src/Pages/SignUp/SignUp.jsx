@@ -2,12 +2,14 @@ import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SingUpPic from '../../assets/images/login/login.svg'
-import { useContext } from "react";
-import { AuthContext } from "../../Provoidor/AuthProvidor";
+// import { useContext } from "react";
+// import { AuthContext } from "../../Provoidor/AuthProvidor";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser } = useAuth()
+    // const { createUser } = useContext(AuthContext)
     const location = useLocation();
     // console.log(location)
     const navigate = useNavigate()

@@ -3,13 +3,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginPic from '../../assets/images/login/login.svg'
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
-import { useContext } from 'react';
-import { AuthContext } from '../../Provoidor/AuthProvidor';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../Provoidor/AuthProvidor';
+import useAuth from '../../Hooks/useAuth';
 // import axios from 'axios';
 
 const Login = () => {
 
-    const { googleLogin, loginUser } = useContext(AuthContext)
+    const { googleLogin, loginUser } = useAuth()
+    // const { googleLogin, loginUser } = useContext(AuthContext)
     const location = useLocation();
     // console.log(location)
     const navigate = useNavigate()
@@ -45,7 +47,7 @@ const Login = () => {
                 console.log(logInUser)
                 // const user = { email }
 
-
+                navigate(location?.state ? location.state : '/')
 
                 // get access token
                 // axios.post('http://localhost:5000/jwt', user, {

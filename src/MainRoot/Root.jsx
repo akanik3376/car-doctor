@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/booking',
-                element: <Booking></Booking>,
+                element: <PrivetRoot><Booking></Booking></PrivetRoot>,
                 // loader: () => fetch(`http://localhost:5000/bookings?email=ridoygh51@gmail.com`)
             },
 
