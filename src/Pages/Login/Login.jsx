@@ -1,20 +1,31 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginPic from '../../assets/images/login/login.svg'
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { useContext } from 'react';
 import { AuthContext } from '../../Provoidor/AuthProvidor';
+// import axios from 'axios';
 
 const Login = () => {
 
     const { googleLogin, loginUser } = useContext(AuthContext)
+    const location = useLocation();
+    // console.log(location)
+    const navigate = useNavigate()
 
     const handelGoogleLogin = () => {
         googleLogin()
 
             .then((result) => {
-                console.log(result)
+                const logInUser = result.user;
+                console.log(logInUser)
+                // const user = { email }
+
+                navigate(location?.state ? location.state : '/')
+
+                // get access token
+
             })
             .catch((error) => {
                 console.log(error)
@@ -30,7 +41,26 @@ const Login = () => {
         console.log(email, password)
         loginUser(email, password)
             .then((result) => {
-                console.log(result)
+                const logInUser = result.user;
+                console.log(logInUser)
+                // const user = { email }
+
+
+
+                // get access token
+                // axios.post('http://localhost:5000/jwt', user, {
+                //     withCredentials: true
+                // })
+                //     .then(res => {
+                //         console.log(res.data);
+                //         if (res.data.success) {
+                //             // navigate(location?.state ? location.state : '/') 
+                //         }
+                //     })
+                //     .catch(error => {
+                //         console.log(error);
+                //     })
+
             })
             .catch((error) => {
                 console.log(error)

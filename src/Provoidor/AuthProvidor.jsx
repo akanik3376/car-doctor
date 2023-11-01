@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 import app from "../Firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext()
 
@@ -41,8 +42,25 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email
+            const loggedUser = { email: userEmail }
             setUser(currentUser)
             setLoading(false)
+            // if currentUser exist  issue a token
+
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log("token response browser", res.data)
+                    })
+            }
+            else {
+                axios.post('http://localhost:5000/login', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log("browser", res.data)
+                    })
+            }
+
         })
         return () => {
             return unSubscribe

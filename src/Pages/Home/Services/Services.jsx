@@ -27,22 +27,22 @@ const Services = () => {
                 }
             </div>
 
-            <div className="my-12 bg-[#151515] h-[200px] flex justify-around items-center text-white">
-                <div className="flex items-center gap-4">
+            <div className="my-12 bg-[#151515] h-[600px] md:h-[200px] grid grid-cols-1 md:grid-cols-3 py-10  items-center text-white ">
+                <div className="flex flex-col lg:flex-row my-8 justify-center items-center gap-4">
                     <img src={timeImg} alt="" />
                     <div>
                         <p>We are open monday-friday</p>
                         <h4 className="text-xl">7:00 am - 9:00 pm</h4>
                     </div>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col lg:flex-row my-8 justify-center items-center gap-4">
                     <img src={phoneImg} alt="" />
                     <div>
                         <p>We are open monday-friday</p>
                         <h4 className="text-xl">7:00 am - 9:00 pm</h4>
                     </div>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col lg:flex-row my-8 justify-center items-center gap-4">
                     <img src={locationImg} alt="" />
                     <div>
                         <p>We are open monday-friday</p>

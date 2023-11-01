@@ -1,6 +1,6 @@
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SingUpPic from '../../assets/images/login/login.svg'
 import { useContext } from "react";
 import { AuthContext } from "../../Provoidor/AuthProvidor";
@@ -8,6 +8,10 @@ import { AuthContext } from "../../Provoidor/AuthProvidor";
 const SignUp = () => {
 
     const { createUser } = useContext(AuthContext)
+    const location = useLocation();
+    // console.log(location)
+    const navigate = useNavigate()
+
 
     const HandelLogin = e => {
         e.preventDefault()
@@ -22,6 +26,7 @@ const SignUp = () => {
                 const user = result.user;
 
                 console.log(user)
+                navigate(location?.state ? location.state : '/')
             })
             .catch((error) => {
                 console.log(error)
